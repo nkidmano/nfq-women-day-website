@@ -1,9 +1,11 @@
 "use client";
 import React, { useState, useEffect, createContext, useContext } from "react";
-
+import { Person } from "@/types";
 interface NameContextProps {
     name: string;
     setName: (name: string) => void;
+    person: Person;
+    setPerson: (person: Person) => void;
     isSet: boolean;
 }
 
@@ -23,6 +25,10 @@ interface NameProviderProps {
 
 export const NameProvider = ({ children }: NameProviderProps) => {
     const [name, setName] = useState<string>("");
+    const [person, setPerson] = useState<Person>({
+        name: "",
+        ticket: 0,
+    });
     const [isSet, setIsSet] = useState<boolean>(false);
 
     useEffect(() => {
@@ -34,7 +40,8 @@ export const NameProvider = ({ children }: NameProviderProps) => {
     }, [name]);
 
     return (
-        <nameContext.Provider value={{ name, setName, isSet }}>
+        <nameContext.Provider
+            value={{ name, setName, isSet, person, setPerson }}>
             {children}
         </nameContext.Provider>
     );

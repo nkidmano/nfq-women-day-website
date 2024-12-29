@@ -4,3 +4,8 @@ export interface MusicVideo {
     src: string;
     title: string;
 }
+
+export interface Person {
+    name: string;
+    ticket: number;
+}
