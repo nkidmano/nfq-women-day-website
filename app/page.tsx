@@ -5,13 +5,13 @@ import Image from "next/image";
 import { useName } from "@/context/nameContext";
 import NameDialog from "@/components/dialog/NameDialog";
 import { Button } from "@/components/ui/button";
-import parse from "html-react-parser";
+
 import {
     musicVideos,
     messages,
     fortuneBoosters,
     stayAlerts,
-    unexpectedFortunes,
+    refers,
 } from "@/lib/constants";
 import {
     Card,
@@ -21,14 +21,7 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card";
-import { MusicVideo, Person } from "@/types";
-import {
-    Carousel,
-    CarouselContent,
-    CarouselItem,
-    CarouselNext,
-    CarouselPrevious,
-} from "@/components/ui/carousel";
+import { MusicVideo } from "@/types";
 import TextCard from "@/components/card/TextCard";
 import { Car } from "lucide-react";
 import { MysteryBox } from "@/components/decorations/MysteryBox";
@@ -52,9 +45,12 @@ export default function Home() {
     useEffect(() => {
         if (person && person.name != "") {
             setUnexpectedFortune(
-                unexpectedFortunes
+                refers
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 2)
+                    .map((refer) => {
+                        return `Refer your friend for <a href="${refer.url}" target="_blank" className="underline text-blue-400 z-10">${refer.title}</a> at NFQ`;
+                    })
                     .concat(
                         `${
                             person.ticket > 0
@@ -119,16 +115,15 @@ export default function Home() {
                                 <Card>
                                     <CardContent className="flex flex-col items-center justify-center space-y-4 p-6 bg-white rounded-xl w-[600px]">
                                         <TextCard
-                                            title="👇Here is your message:"
+                                            title="👇Here is your message👇 "
                                             description={message}
                                         />
                                         <TextCard
-                                            title="🌟 Your Fortune Boosters
-                                                        🌟"
+                                            title="🍀Your Lucky Booster🍀"
                                             description={fortuneBooster}
                                         />
                                         <TextCard
-                                            title="⚠️Stay alert for⚠️"
+                                            title="⚠️Be Cautious Of⚠️"
                                             description={stayAlert}
                                         />
                                     </CardContent>

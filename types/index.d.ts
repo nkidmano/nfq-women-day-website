@@ -9,3 +9,8 @@ export interface Person {
     name: string;
     ticket: number;
 }
+
+export interface Refer {
+    title: string;
+    url: string;
+}
