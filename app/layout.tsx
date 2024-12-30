@@ -24,7 +24,7 @@ const quicksand = Quicksand({
     subsets: ["latin"],
 });
 export const metadata: Metadata = {
-    title: "NFQ NEW YEAR",
+    title: "NFQ FORTUNE TELLER",
     description: "Fortune teller",
 };
 
