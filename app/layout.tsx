@@ -3,15 +3,6 @@ import { Geist, Geist_Mono, Sigmar_One, Quicksand } from "next/font/google";
 import "./globals.css";
 import { NameProvider } from "@/context/nameContext";
 import { Toaster } from "@/components/ui/toaster";
-const geistSans = Geist({
-    variable: "--font-geist-sans",
-    subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-    variable: "--font-geist-mono",
-    subsets: ["latin"],
-});
 
 const sigmarOne = Sigmar_One({
     weight: "400",

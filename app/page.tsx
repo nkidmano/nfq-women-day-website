@@ -85,7 +85,7 @@ export default function Home() {
                         <br />
                         FORTUNE TELLER{" "}
                     </h1>
-                    <p className="text-3xl font-bold text-white">
+                    <p className="text-2xl font-bold text-white">
                         ✨Step into 2025 with a touch of magic.✨
                     </p>
                 </div>
@@ -98,7 +98,7 @@ export default function Home() {
                                     <span className="font-bold"> {name}</span>,
                                 </p>
                             </div>
-                            <p>
+                            <p className="text-xl">
                                 Let this song set the mood for your incredible
                                 2025.
                             </p>
