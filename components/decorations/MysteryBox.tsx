@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import parse from "html-react-parser";
 interface RevealBoxProps {
     text: string;
+    boxText: string;
 }
 
-export function MysteryBox({ text }: RevealBoxProps) {
+export function MysteryBox({ text, boxText }: RevealBoxProps) {
     const [isRevealed, setIsRevealed] = useState(false);
 
     return (
@@ -24,7 +25,7 @@ export function MysteryBox({ text }: RevealBoxProps) {
                     pointerEvents: isRevealed ? "none" : "auto",
                 }}
                 onClick={() => setIsRevealed(true)}>
-                {!isRevealed && "Click to reveal"}
+                {!isRevealed && `${boxText}`}
             </motion.div>
         </div>
     );

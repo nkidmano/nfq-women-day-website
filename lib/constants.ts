@@ -418,3 +418,9 @@ export const musicVideos: MusicVideo[] = [
         title: "BIGBANG - 뱅뱅뱅 (BANG BANG BANG) M/V",
     },
 ];
+
+export const boxTexts: string[] = [
+    "Hey, over here! Click me!",
+    "Open me now! I’ve got something for you!",
+    " Don’t forget me!",
+];

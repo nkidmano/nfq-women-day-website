@@ -12,6 +12,7 @@ import {
     fortuneBoosters,
     stayAlerts,
     refers,
+    boxTexts,
 } from "@/lib/constants";
 import {
     Card,
@@ -23,7 +24,6 @@ import {
 } from "@/components/ui/card";
 import { MusicVideo } from "@/types";
 import TextCard from "@/components/card/TextCard";
-import { Car } from "lucide-react";
 import { MysteryBox } from "@/components/decorations/MysteryBox";
 
 export default function Home() {
@@ -49,7 +49,7 @@ export default function Home() {
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 2)
                     .map((refer) => {
-                        return `Refer your friend for <a href="${refer.url}" target="_blank" className="underline text-blue-400 z-10">${refer.title}</a> at NFQ`;
+                        return `Refer your friend for <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ`;
                     })
                     .concat(
                         `${
@@ -95,7 +95,11 @@ export default function Home() {
                             <div className="flex w-full items-start justify-center ">
                                 <p className="text-2xl">
                                     Hi
-                                    <span className="font-bold"> {name}</span>,
+                                    <span className="font-bold text-[#fff307]">
+                                        {" "}
+                                        {name}
+                                    </span>
+                                    ,
                                 </p>
                             </div>
                             <p className="text-xl">
@@ -135,18 +139,24 @@ export default function Home() {
                                         onClick={() => setIsTriggered(true)}>
                                         <p className="text-lg">
                                             Trade Your Bad Luck for Better Luck
+                                            - CLICK HERE!
                                         </p>
-
-                                        <p className="text-xl">CLICK HERE!</p>
                                     </Button>
                                 ) : (
                                     <Card>
-                                        <CardContent className="flex flex-col items-center justify-center space-y-4 p-6 bg-white rounded-xl w-[600px]">
+                                        <CardHeader className="font-bold text-xl text-[#bb1b12] text-center">
+                                            3 Ways to Trade Bad Luck for Better
+                                            Luck
+                                        </CardHeader>
+                                        <CardContent className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl w-[600px]">
                                             {unexpectedFortune.map(
                                                 (fortune, index) => (
                                                     <MysteryBox
                                                         key={index}
                                                         text={fortune}
+                                                        boxText={
+                                                            boxTexts[index]
+                                                        }
                                                     />
                                                 )
                                             )}
