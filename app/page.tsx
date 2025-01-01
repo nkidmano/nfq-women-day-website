@@ -54,7 +54,9 @@ export default function Home() {
                     .concat(
                         `${
                             person.ticket > 0
-                                ? `🎉 You get ${person.ticket} scratch cards at the upcoming Ferbruary event! 🎉`
+                                ? person.type == "scratch"
+                                    ? `🎉 You get ${person.ticket} scratch cards at the upcoming Ferbruary event! 🎉`
+                                    : `🎉 You get ${person.ticket} food tickets`
                                 : "Unfortunately, you didn't get any cards 😢"
                         }`
                     )

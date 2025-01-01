@@ -28,6 +28,7 @@ export const NameProvider = ({ children }: NameProviderProps) => {
     const [person, setPerson] = useState<Person>({
         name: "",
         ticket: 0,
+        type: "none",
     });
     const [isSet, setIsSet] = useState<boolean>(false);
 

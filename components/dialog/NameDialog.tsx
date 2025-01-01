@@ -9,90 +9,189 @@ import {
     checkTicketLeft,
 } from "@/database/actions";
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-    DialogTrigger,
-} from "@/components/ui/dialog";
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select";
+
 import { Input } from "../ui/input";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
+import { SelectLabel } from "@radix-ui/react-select";
+
+const locations: string[] = ["Ho Chi Minh", "Da Nang", "Ha Noi", "Can Tho"];
+
 const NameDialog = () => {
     const [empName, setEmpName] = useState("");
     const { setName, isSet, name, setPerson } = useName();
+    const [location, setLocation] = useState("Ho Chi Minh");
     const { toast } = useToast();
+    const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const submitName = async (name: string) => {
+    const submitName = async (name: string, location: string) => {
+        setIsSubmitting(true);
         name = name.toUpperCase();
-        await checkPerson(name).then(async (res) => {
-            if (!res) {
-                await addPerson(name);
-                setName(name);
-                // random a boolean with rate 0.35 0.65
-                const rate = Math.random() < 0.65;
-                if (!rate) {
-                    const ticketLeft = await checkTicketLeft();
-                    if (ticketLeft > 0) {
-                        const rand = Math.floor(Math.random() * 3);
-                        const ticket = Math.min(rand, ticketLeft);
-                        await addTicket(name, ticket).then(async (res) => {
-                            await deduceTicket(ticket);
-                            setPerson({ name: name, ticket: ticket });
-                        });
+        await checkPerson(name)
+            .then(async (res) => {
+                if (!res) {
+                    await addPerson(name, location);
+                    setName(name);
+                    if (location == "Ho Chi Minh") {
+                        const rate = Math.random();
+                        // get scratch card
+                        if (0.34 <= rate && rate < 0.66) {
+                            const amount = Math.floor(Math.random() * 3) + 1;
+                            // check ticket left
+                            const ticketLeft = await checkTicketLeft(
+                                `scratch_${amount}`
+                            );
+
+                            if (ticketLeft > 0) {
+                                await addTicket(name, amount, "scratch").then(
+                                    async (res) => {
+                                        await deduceTicket(
+                                            1,
+                                            `scratch_${amount}`
+                                        );
+                                        setPerson({
+                                            name: name,
+                                            ticket: amount,
+                                            type: "scratch",
+                                        });
+                                    }
+                                );
+                            } else {
+                                setPerson({
+                                    name: name,
+                                    ticket: 0,
+                                    type: "none",
+                                });
+                            }
+                        }
+                        // food
+                        else if (rate >= 0.66) {
+                            const amount = Math.floor(Math.random() * 2) + 1;
+
+                            const ticketLeft = await checkTicketLeft(
+                                `food_${amount}`
+                            );
+
+                            if (ticketLeft > 0) {
+                                await addTicket(name, amount, "food").then(
+                                    async (res) => {
+                                        deduceTicket(1, `food_${amount}`);
+                                        setPerson({
+                                            name: name,
+                                            ticket: amount,
+                                            type: "food",
+                                        });
+                                    }
+                                );
+                            } else {
+                                setPerson({
+                                    name: name,
+                                    ticket: 0,
+                                    type: "none",
+                                });
+                            }
+                        }
+
+                        // none
+                        else {
+                            setPerson({ name: name, ticket: 0, type: "none" });
+                        }
                     } else {
-                        setPerson({ name: name, ticket: 0 });
+                        const rate = Math.random() > 0.65;
+                        if (rate) {
+                            const amount = Math.floor(Math.random() * 3) + 1;
+                            const ticketLeft = await checkTicketLeft(
+                                `scratch_${amount}`
+                            );
+                            if (ticketLeft > 0) {
+                                await addTicket(name, amount, "scratch").then(
+                                    async (res) => {
+                                        deduceTicket(1, `scratch_${amount}`);
+                                        setPerson({
+                                            name: name,
+                                            ticket: amount,
+                                            type: "scratch",
+                                        });
+                                    }
+                                );
+                            } else {
+                                setPerson({
+                                    name: name,
+                                    ticket: 0,
+                                    type: "none",
+                                });
+                            }
+                        } else {
+                            setPerson({ name: name, ticket: 0, type: "none" });
+                        }
                     }
                 } else {
-                    setPerson({ name: name, ticket: 0 });
+                    toast({
+                        title: "Name already exists",
+                        description: "Please enter a different name",
+                        variant: "destructive",
+                    });
                 }
-            } else {
-                toast({
-                    title: "Name already exists",
-                    description: "Please enter a different name",
-                    variant: "destructive",
-                });
-            }
-        });
+            })
+            .finally(() => {
+                setIsSubmitting(false);
+            });
     };
 
-    useEffect(() => {
-        const handleKeyDown = async (e: any) => {
-            if (e.key === "Enter") {
-                submitName(empName);
-            }
-        };
-
-        window.addEventListener("keydown", handleKeyDown);
-
-        // Cleanup the event listener on component unmount
-        return () => {
-            window.removeEventListener("keydown", handleKeyDown);
-        };
-    }, [empName, setName]);
     return (
-        <div className="w-full flex flex-col space-y-4 justify-center items-center">
+        <div className="w-[500px] flex flex-col space-y-4 justify-center items-center">
             <p className="text-3xl text-white">Enter your full name: </p>
-            <div className="w-[500px] p-6 bg-white rounded-full">
+            <div className="w-full p-3 bg-white rounded-full">
                 <Input
                     placeholder="Name"
                     onChange={(e) => setEmpName(e.target.value)}
-                    className="w-full  border-none ring-visible:none focus:ring-0 text-xl shadow-none"
+                    className="w-full border-none ring-visible:none focus:ring-0 text-xl shadow-none"
                     required
                 />
             </div>
-            {/* 
+            <p className="text-3xl text-white">Select location:</p>
+            <Select onValueChange={(value) => setLocation(value)}>
+                <SelectTrigger className="w-full bg-white p-6 rounded-full text-xl shadow-none">
+                    <SelectValue
+                        defaultValue={"Ho Chi Minh"}
+                        placeholder={"Ho Chi Minh"}>
+                        {location}
+                    </SelectValue>
+                </SelectTrigger>
+                <SelectContent>
+                    {locations.map((loc) => (
+                        <SelectItem
+                            value={loc}
+                            key={loc}
+                            onClick={() => setLocation(loc)}
+                            className="text-xl">
+                            {loc}
+                        </SelectItem>
+                    ))}
+                </SelectContent>
+            </Select>
             <div className="w-full flex justify-end items-center">
                 <Button
                     onClick={() => {
-                        submitName(empName);
+                        submitName(empName, location);
                     }}
-                    className="w-full">
-                    Submit
+                    disabled={isSubmitting}
+                    className={`
+                    ${
+                        isSubmitting
+                            ? "cursor-not-allowed bg-[#fbc13a]/50 hover:bg-[#fbc13a]/50 w-full text-xl p-6 rounded-full shadow-none text-white"
+                            : "w-full text-xl p-6 rounded-full shadow-none bg-[#fbc13a] text-white hover:bg-[#fbc13a]/90"
+                    }`}>
+                    {isSubmitting ? "Submitting..." : "Submit"}
                 </Button>
-            </div> */}
+            </div>
         </div>
     );
 };

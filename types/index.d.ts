@@ -8,6 +8,7 @@ export interface MusicVideo {
 export interface Person {
     name: string;
     ticket: number;
+    type: string;
 }
 
 export interface Refer {
