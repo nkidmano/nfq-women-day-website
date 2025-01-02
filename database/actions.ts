@@ -39,5 +39,6 @@ export const getPerson = async (name: string): Promise<Person> => {
         ticket: rows[0]["ticket"],
         type: rows[0]["type"],
     };
+
     return person;
 };
