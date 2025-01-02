@@ -55,9 +55,9 @@ export default function Home() {
                         `${
                             person.ticket > 0
                                 ? person.type == "scratch"
-                                    ? `🎉 You get ${person.ticket} scratch cards at the upcoming Ferbruary event! 🎉`
-                                    : `🎉 You get ${person.ticket} food tickets`
-                                : "Unfortunately, you didn't get any cards 😢"
+                                    ? `🎉 You get ${person.ticket} <span className="font-bold">scratch ${person.ticket > 1 ? "cards" : "card"}</span> for the upcoming Ferbruary event! 🎉`
+                                    : `🎉 You get ${person.ticket} <span className="font-bold">${person.ticket > 1 ? "tickets" : "ticket"}</span> for Tết Xóm Tech! 🎉`
+                                : "✨ Stay confident and shine brightly! Your time is coming! ✨"
                         }`
                     )
                     .sort(() => 0.5 - Math.random())
