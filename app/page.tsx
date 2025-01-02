@@ -49,14 +49,24 @@ export default function Home() {
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 2)
                     .map((refer) => {
-                        return `Refer your friend for <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ`;
+                        return `Refer your friend for <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ.`;
                     })
                     .concat(
                         `${
                             person.ticket > 0
                                 ? person.type == "scratch"
-                                    ? `🎉 You get ${person.ticket} <span className="font-bold">scratch ${person.ticket > 1 ? "cards" : "card"}</span> for the upcoming Ferbruary event! 🎉`
-                                    : `🎉 You get ${person.ticket} <span className="font-bold">${person.ticket > 1 ? "tickets" : "ticket"}</span> for Tết Xóm Tech! 🎉`
+                                    ? `🎉 You get ${
+                                          person.ticket
+                                      } <span className="font-bold">scratch ${
+                                          person.ticket > 1 ? "cards" : "card"
+                                      }</span> for the upcoming Ferbruary event! 🎉`
+                                    : `🎉 You get ${
+                                          person.ticket
+                                      } <span className="font-bold">${
+                                          person.ticket > 1
+                                              ? "tickets"
+                                              : "ticket"
+                                      }</span> for Tết Xóm Tech! 🎉`
                                 : "✨ Stay confident and shine brightly! Your time is coming! ✨"
                         }`
                     )
