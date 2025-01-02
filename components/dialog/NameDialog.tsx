@@ -27,7 +27,7 @@ const locations: string[] = ["Ho Chi Minh", "Da Nang", "Ha Noi", "Can Tho"];
 const NameDialog = () => {
     const [empName, setEmpName] = useState("");
     const { setName, isSet, name, setPerson } = useName();
-    const [location, setLocation] = useState("Ho Chi Minh");
+    const [location, setLocation] = useState("");
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -36,6 +36,14 @@ const NameDialog = () => {
             toast({
                 title: "Name can't be empty",
                 description: "Please enter your name",
+                variant: "destructive",
+            });
+            return;
+        }
+        if (location == "") {
+            toast({
+                title: "Location can't be empty",
+                description: "Please select your location",
                 variant: "destructive",
             });
             return;
@@ -167,9 +175,7 @@ const NameDialog = () => {
             <p className="text-3xl text-white">Select location:</p>
             <Select onValueChange={(value) => setLocation(value)}>
                 <SelectTrigger className="w-full bg-white p-6 rounded-full text-xl shadow-none">
-                    <SelectValue
-                        defaultValue={"Ho Chi Minh"}
-                        placeholder={"Ho Chi Minh"}>
+                    <SelectValue placeholder={"Select location"}>
                         {location}
                     </SelectValue>
                 </SelectTrigger>
@@ -179,7 +185,7 @@ const NameDialog = () => {
                             value={loc}
                             key={loc}
                             onClick={() => setLocation(loc)}
-                            className="text-xl">
+                            className="text-xl cursor-pointer font-[family-name:var(--font-quicksand)]">
                             {loc}
                         </SelectItem>
                     ))}
