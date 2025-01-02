@@ -114,7 +114,6 @@ export const fortuneBoosters: string[] = [
     "A moment of manifest.",
     "A connection with nature’s beauty.",
     "A perfect snack for a movie night.",
-    "A meme that makes your day.",
     "A cozy night in with your favorite book.",
     "A handwritten letter from a loved one.",
     "The discovery of a song you can’t stop replaying.",
