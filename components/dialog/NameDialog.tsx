@@ -32,6 +32,14 @@ const NameDialog = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const submitName = async (name: string, location: string) => {
+        if (name == "") {
+            toast({
+                title: "Name can't be empty",
+                description: "Please enter your name",
+                variant: "destructive",
+            });
+            return;
+        }
         setIsSubmitting(true);
         name = name.toUpperCase();
         await checkPerson(name)
@@ -148,12 +156,12 @@ const NameDialog = () => {
     return (
         <div className="w-[500px] flex flex-col space-y-4 justify-center items-center">
             <p className="text-3xl text-white">Enter your full name: </p>
-            <div className="w-full p-3 bg-white rounded-full">
+            <div className="w-full mx-auto bg-white rounded-full">
                 <Input
+                    type="text"
                     placeholder="Name"
                     onChange={(e) => setEmpName(e.target.value)}
-                    className="w-full border-none ring-visible:none focus:ring-0 text-xl shadow-none"
-                    required
+                    className="w-full border-none focus:ring-0 md:text-xl p-6 m-0 shadow-none placeholder:text-gray-400"
                 />
             </div>
             <p className="text-3xl text-white">Select location:</p>

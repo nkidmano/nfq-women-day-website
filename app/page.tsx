@@ -55,14 +55,14 @@ export default function Home() {
                         `${
                             person.ticket > 0
                                 ? person.type == "scratch"
-                                    ? `🎉 You get ${
+                                    ? `🎉 You get <span className="font-bold"> ${
                                           person.ticket
-                                      } <span className="font-bold">scratch ${
+                                      } scratch ${
                                           person.ticket > 1 ? "cards" : "card"
                                       }</span> for the upcoming Ferbruary event! 🎉`
-                                    : `🎉 You get ${
+                                    : `🎉 You get  <span className="font-bold">${
                                           person.ticket
-                                      } <span className="font-bold">${
+                                      } ${
                                           person.ticket > 1
                                               ? "tickets"
                                               : "ticket"
