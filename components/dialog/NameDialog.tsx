@@ -40,6 +40,17 @@ const NameDialog = () => {
             });
             return;
         }
+
+        // check if name is one word only
+        if (name.split(" ").length == 1) {
+            toast({
+                title: "Must be full name",
+                description: "Please enter your full name",
+                variant: "destructive",
+            });
+            return;
+        }
+
         if (location == "") {
             toast({
                 title: "Location can't be empty",

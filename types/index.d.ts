@@ -12,6 +12,7 @@ export interface Person {
 }
 
 export interface Refer {
+    description: string;
     title: string;
     url: string;
 }

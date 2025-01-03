@@ -120,7 +120,6 @@ export const stayAlerts: string[] = [
     "Neglecting your physical and mental health.",
     "Overspending on non-essential items.",
     "Relying too heavily on others for support.",
-    "Avoiding difficult conversations.",
     "Letting fear of failure hold you back.",
     "Trusting someone who doesn’t have your best interests at heart.",
     "Being overly critical of yourself.",
@@ -145,7 +144,6 @@ export const stayAlerts: string[] = [
     "Dwelling on past mistakes.",
     "Avoiding challenges that could help you grow.",
     "Being too passive in pursuing your goals.",
-    "Overlooking small signs of progress.",
     "Disregarding the advice of trusted mentors.",
     "Failing to manage your time effectively.",
     "Underestimating your capabilities.",
@@ -158,7 +156,6 @@ export const stayAlerts: string[] = [
     "Overloading yourself with responsibilities.",
     "Neglecting to plan for the future.",
     "Becoming overly dependent on technology.",
-    "Avoiding feedback out of fear of criticism.",
     "Allowing fear to dictate your decisions.",
     "Getting stuck in unhealthy routines.",
     "Taking love for granted.",
@@ -176,28 +173,42 @@ export const stayAlerts: string[] = [
 
 export const refers: Refer[] = [
     {
-        title: "Frontend Developer",
-        url: "https://jobs.lever.co/nfq/70a00f5c-0a9e-409b-a30a-2ad6949f6b7c",
+        description:
+            "You can boost your luck in 2025 by referring a friend for",
+        title: "HubSpot CRM Specialist",
+        url: "https://jobs.lever.co/nfq/1859aefe-ae55-4f19-b01f-20e4f8b74a4c",
     },
     {
-        title: "DevOps Engineer",
-        url: "https://jobs.lever.co/nfq/94d672a1-5fee-4320-8ef0-d3641f272e8a",
-    },
-    {
-        title: "QC Engineer",
-        url: "https://jobs.lever.co/nfq/51d4869c-23d7-411a-9c56-f13fba4c9cc4",
-    },
-    {
-        title: "PHP Developer",
-        url: "https://jobs.lever.co/nfq/7ee8636d-b7df-4356-a34e-5d6c4ec87471",
-    },
-    {
-        title: "IT Project Manager",
-        url: "https://jobs.lever.co/nfq/c801f109-ff1b-4602-9b4d-0d2ca753c21c",
-    },
-    {
+        description:
+            "Financial luck may come your way if you refer a friend for",
         title: "Project Manager - Data",
         url: "https://jobs.lever.co/nfq/5a5e0ffe-c13c-4e4e-bb42-8876d5c7c8b3",
+    },
+    {
+        description: "You can attract good luck by referring a friend for",
+        title: "QC Automation Engineer",
+        url: "https://jobs.lever.co/nfq/c817790a-5a07-4380-a6fb-65d2915b3b1c",
+    },
+    {
+        description: "Brighten your 2025 by referring a friend for",
+        title: "Chief Financial Officer (CFO)",
+        url: "https://jobs.lever.co/nfq/0b031f57-f336-49a8-ba8d-87316abc93fb",
+    },
+    {
+        description: "Luck is on the way if you refer a friend for",
+        title: "Executive Assistant",
+        url: "https://jobs.lever.co/nfq/dae05a44-2078-4c46-b1d6-6913f66c8c75",
+    },
+    {
+        description: "Set the stage for success by referring a friend for",
+        title: "Talent Acquisition Executive",
+        url: "https://jobs.lever.co/nfq/c66552ce-3d1e-4804-8bdb-499ec4d7db8d",
+    },
+    {
+        description:
+            "You can boost your luck in 2025 by referring a friend for",
+        title: "Head of Business Unit",
+        url: "https://jobs.lever.co/nfq/d73a93c7-eef8-4935-9c06-26b63978dc70",
     },
 ];
 
@@ -410,6 +421,20 @@ export const musicVideos: MusicVideo[] = [
 
 export const boxTexts: string[] = [
     "Hey, over here! Click me!",
-    "Open me now! I’ve got something for you!",
-    " Don’t forget me!",
+    "Open me now! Bad luck hates this trick!",
+    "Don’t forget me! I’ve got something for you! ",
+];
+
+export const unfortunate: string[] = [
+    "Oh noooo, there’s no gift for you! Take a deep breath to have better luck next time.🌟",
+    "Oh noooo, your gift is missing! Grab a snack to feel better and wait for your next chance.🍪",
+    "Oh noooo, someone took your gift! Ask for a hug from Annie to cheer yourself up.🤗",
+    "Oh noooo, someone took your gift! Ask for a hug from Ludo to ease your bad luck.",
+    "Oh noooo, no gift here! Share a laugh with a colleague and get ready for your next chance.😄",
+    "Oh noooo, someone has stolen your gift! Take a nap and let good luck come back to you.😴",
+    "Oh noooo, your gift is gone! Take a coffee cup and get ready for better luck soon.☕",
+    "Oopsss, no present here! Take a little walk and let your luck reset.👣",
+    "Oh noooo, your gift is stolen! Smile big to trade your bad luck for better luck.😆",
+    "Oh noooo, no gift for you! Eat something sweet to throw away your bad luck.🍩",
+    "Oopsss, your gift disappeared! Keep calm and stay confident to have better luck next time.✨",
 ];

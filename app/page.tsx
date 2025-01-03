@@ -13,6 +13,7 @@ import {
     stayAlerts,
     refers,
     boxTexts,
+    unfortunate,
 } from "@/lib/constants";
 import {
     Card,
@@ -49,7 +50,7 @@ export default function Home() {
                     .sort(() => 0.5 - Math.random())
                     .slice(0, 2)
                     .map((refer) => {
-                        return `Refer your friend for <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ.`;
+                        return `${refer.description} <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ.`;
                     })
                     .concat(
                         `${
@@ -59,15 +60,21 @@ export default function Home() {
                                           person.ticket
                                       } scratch ${
                                           person.ticket > 1 ? "cards" : "card"
-                                      }</span> for the upcoming Ferbruary event! 🎉`
+                                      }</span> for a mini-event which will happen after Tet! 🎉`
                                     : `🎉 You get  <span className="font-bold">${
                                           person.ticket
                                       } ${
                                           person.ticket > 1
                                               ? "tickets"
                                               : "ticket"
-                                      }</span> for Tết Xóm Tech! 🎉`
-                                : "✨ Stay confident and shine brightly! Your time is coming! ✨"
+                                      }</span> for <a href="https://nfq-international.slack.com/archives/C053CBZ6CQK/p1735542936734629" target="_blank" className="underline font-bold text-blue-400 z-10">Tết Xóm Tech</a>! 🎉`
+                                : `${
+                                      unfortunate[
+                                          Math.floor(
+                                              Math.random() * unfortunate.length
+                                          )
+                                      ]
+                                  }`
                         }`
                     )
                     .sort(() => 0.5 - Math.random())
@@ -131,7 +138,7 @@ export default function Home() {
                                 <Card>
                                     <CardContent className="flex flex-col items-center justify-center space-y-4 p-6 bg-white rounded-xl w-[600px]">
                                         <TextCard
-                                            title="👇Here is your message👇 "
+                                            title="👇Here Is Your Message👇 "
                                             description={message}
                                         />
                                         <TextCard
@@ -150,29 +157,32 @@ export default function Home() {
                                         className=" text-[#fbc13a] bg-black h-fit font-bold flex flex-col justify-center space-y-4 items-center p-4"
                                         onClick={() => setIsTriggered(true)}>
                                         <p className="text-lg">
-                                            Trade Your Bad Luck for Better Luck
-                                            - CLICK HERE!
+                                            Ready to test your New Year's Luck?
+                                            CLICK HERE!
                                         </p>
                                     </Button>
                                 ) : (
-                                    <Card>
+                                    <Card className="w-[600px]">
                                         <CardHeader className="font-bold text-xl text-[#bb1b12] text-center">
-                                            3 Ways to Trade Bad Luck for Better
-                                            Luck
+                                            You will find in the 3 boxes below
+                                            either ways to trade your bad luck
+                                            or....a LUCKY GIFTTTT!
                                         </CardHeader>
-                                        <CardContent className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl w-[600px]">
-                                            {unexpectedFortune.map(
-                                                (fortune, index) => (
-                                                    <MysteryBox
-                                                        key={index}
-                                                        text={fortune}
-                                                        boxText={
-                                                            boxTexts[index]
-                                                        }
-                                                    />
-                                                )
-                                            )}
-                                        </CardContent>
+                                        <div className="w-full flex justify-center items-center">
+                                            <CardContent className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl w-[600px]">
+                                                {unexpectedFortune.map(
+                                                    (fortune, index) => (
+                                                        <MysteryBox
+                                                            key={index}
+                                                            text={fortune}
+                                                            boxText={
+                                                                boxTexts[index]
+                                                            }
+                                                        />
+                                                    )
+                                                )}
+                                            </CardContent>
+                                        </div>
                                     </Card>
                                 )}
                             </div>
