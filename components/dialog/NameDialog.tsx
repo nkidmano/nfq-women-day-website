@@ -31,21 +31,16 @@ const NameDialog = () => {
     const { toast } = useToast();
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const submitName = async (name: string, location: string) => {
-        if (name == "") {
-            toast({
-                title: "Name can't be empty",
-                description: "Please enter your name",
-                variant: "destructive",
-            });
-            return;
-        }
+    function isValidNfqEmail(email: string): boolean {
+        const pattern = /^[a-zA-Z0-9._%+-]+@nfq\.com$/;
+        return pattern.test(email);
+    }
 
-        // check if name is one word only
-        if (name.split(" ").length == 1) {
+    const submitName = async (email: string, location: string) => {
+        if (!isValidNfqEmail(email)) {
             toast({
-                title: "Must be full name",
-                description: "Please enter your full name",
+                title: "Invalid email",
+                description: "Please enter your NFQ email",
                 variant: "destructive",
             });
             return;
@@ -59,12 +54,14 @@ const NameDialog = () => {
             });
             return;
         }
+
         setIsSubmitting(true);
-        name = name.toUpperCase();
-        await checkPerson(name)
+        const name = email.split(".")[0].toUpperCase();
+        email = email.toLowerCase();
+        await checkPerson(email)
             .then(async (res) => {
                 if (!res) {
-                    await addPerson(name, location);
+                    await addPerson(email, location);
                     setName(name);
                     if (location == "Ho Chi Minh") {
                         const rate = Math.random();
@@ -77,7 +74,7 @@ const NameDialog = () => {
                             );
 
                             if (ticketLeft > 0) {
-                                await addTicket(name, amount, "scratch").then(
+                                await addTicket(email, amount, "scratch").then(
                                     async (res) => {
                                         await deduceTicket(
                                             1,
@@ -107,7 +104,7 @@ const NameDialog = () => {
                             );
 
                             if (ticketLeft > 0) {
-                                await addTicket(name, amount, "food").then(
+                                await addTicket(email, amount, "food").then(
                                     async (res) => {
                                         deduceTicket(1, `food_${amount}`);
                                         setPerson({
@@ -138,7 +135,7 @@ const NameDialog = () => {
                                 `scratch_${amount}`
                             );
                             if (ticketLeft > 0) {
-                                await addTicket(name, amount, "scratch").then(
+                                await addTicket(email, amount, "scratch").then(
                                     async (res) => {
                                         deduceTicket(1, `scratch_${amount}`);
                                         setPerson({
@@ -174,7 +171,7 @@ const NameDialog = () => {
 
     return (
         <div className="w-[500px] flex flex-col space-y-4 justify-center items-center">
-            <p className="text-3xl text-white">Enter your full name: </p>
+            <p className="text-3xl text-white">Enter your NFQ email: </p>
             <div className="w-full mx-auto bg-white rounded-full">
                 <Input
                     type="text"

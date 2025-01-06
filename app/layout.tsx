@@ -4,6 +4,7 @@ import "./globals.css";
 import { NameProvider } from "@/context/nameContext";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
+import Head from "next/head";
 
 const sigmarOne = Sigmar_One({
     weight: "400",
@@ -27,6 +28,11 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="no-scrollbar">
+            <Head>
+                <meta property="og:image" content="/img/preview.jpg" />
+                <meta property="og:title" content="NFQ FORTUNE TELLER" />
+                <meta property="og:description" content="Fortune teller" />
+            </Head>
             <body
                 className={`${sigmarOne.variable} ${quicksand.variable} antialiased w-full h-fullr`}>
                 <NameProvider>{children}</NameProvider>
