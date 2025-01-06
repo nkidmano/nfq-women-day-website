@@ -25,6 +25,8 @@ export const metadata: Metadata = {
             {
                 url: "/img/preview.jpg",
                 alt: "Preview image",
+                width: 1200,
+                height: 630,
             },
         ],
     },
