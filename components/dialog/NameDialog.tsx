@@ -66,7 +66,7 @@ const NameDialog = () => {
                     if (location == "Ho Chi Minh") {
                         const rate = Math.random();
                         // get scratch card
-                        if (0.34 <= rate && rate < 0.66) {
+                        if (0 < rate && rate < 0.7) {
                             const amount = Math.floor(Math.random() * 3) + 1;
                             // check ticket left
                             const ticketLeft = await checkTicketLeft(
@@ -96,7 +96,7 @@ const NameDialog = () => {
                             }
                         }
                         // food
-                        else if (rate >= 0.66) {
+                        else if (rate >= 0.7) {
                             const amount = Math.floor(Math.random() * 2) + 1;
 
                             const ticketLeft = await checkTicketLeft(
@@ -128,8 +128,8 @@ const NameDialog = () => {
                             setPerson({ name: name, ticket: 0, type: "none" });
                         }
                     } else {
-                        const rate = Math.random() > 0.65;
-                        if (rate) {
+                        const rate = Math.random() > 0.7;
+                        if (!rate) {
                             const amount = Math.floor(Math.random() * 3) + 1;
                             const ticketLeft = await checkTicketLeft(
                                 `scratch_${amount}`
