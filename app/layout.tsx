@@ -4,7 +4,6 @@ import "./globals.css";
 import { NameProvider } from "@/context/nameContext";
 import { Toaster } from "@/components/ui/toaster";
 import { Analytics } from "@vercel/analytics/react";
-import Head from "next/head";
 
 const sigmarOne = Sigmar_One({
     weight: "400",
@@ -19,6 +18,16 @@ const quicksand = Quicksand({
 export const metadata: Metadata = {
     title: "NFQ FORTUNE TELLER",
     description: "Fortune teller",
+    openGraph: {
+        title: "NFQ FORTUNE TELLER",
+        description: "Fortune teller",
+        images: [
+            {
+                url: "/img/preview.png",
+                alt: "Preview image",
+            },
+        ],
+    },
 };
 
 export default function RootLayout({
@@ -28,11 +37,6 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" className="no-scrollbar">
-            <Head>
-                <meta property="og:image" content="/img/preview.jpg" />
-                <meta property="og:title" content="NFQ FORTUNE TELLER" />
-                <meta property="og:description" content="Fortune teller" />
-            </Head>
             <body
                 className={`${sigmarOne.variable} ${quicksand.variable} antialiased w-full h-fullr`}>
                 <NameProvider>{children}</NameProvider>
