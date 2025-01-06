@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         description: "Fortune teller",
         images: [
             {
-                url: "/img/preview.png",
+                url: "/img/preview.jpg",
                 alt: "Preview image",
             },
         ],
