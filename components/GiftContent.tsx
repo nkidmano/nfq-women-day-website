@@ -5,7 +5,7 @@ import React from 'react'
 
 export default function GiftContent() {
   return (
-    <div className="flex flex-col items-center justify-center space-y-6 text-white">
+    <div className="flex flex-col items-center justify-center space-y-6">
       <OverlappingImages
         image1={{
           src: '/flowers/mountain laurel 1.jpg',
@@ -23,9 +23,9 @@ export default function GiftContent() {
         }}
       />
       <Card className="bg-white rounded-xl shadow-lg w-[600px] !mt-10">
-        <CardHeader className="font-bold text-xl text-center">We have a surprise for you!!!</CardHeader>
+        <CardHeader className="p-6 font-bold text-[#5d4c73] text-xl text-center">We have a surprise for you!!!</CardHeader>
         <div className="w-full flex justify-center items-center">
-          <CardContent className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl">
+          <CardContent className="flex flex-col text-[#5d4c73] items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl">
             <GiftBox />
           </CardContent>
         </div>
