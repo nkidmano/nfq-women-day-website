@@ -18,6 +18,7 @@ import { Card, CardContent, CardHeader } from '@/components/ui/card'
 import { MusicVideo } from '@/types'
 import TextCard from '@/components/card/TextCard'
 import { MysteryBox } from '@/components/decorations/MysteryBox'
+import OverlappingImages from '@/components/card/OverlappingImages'
 
 export default function Home() {
   const { setName, isSet, name, person } = useName()
@@ -33,51 +34,39 @@ export default function Home() {
   const [stayAlert, setStayAlert] = useState<string>(
     stayAlerts[Math.floor(Math.random() * stayAlerts.length)],
   )
-  const [unexpectedFortune, setUnexpectedFortune] = useState<string[]>([])
-
-  useEffect(() => {
-    if (person && person.name != '') {
-      setUnexpectedFortune(
-        refers
-          .sort(() => 0.5 - Math.random())
-          .slice(0, 2)
-          .map((refer) => {
-            return `${refer.description} <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ.`
-          })
-          .concat(
-            `${
-              person.ticket > 0
-                ? person.type == 'scratch'
-                  ? `🎉 You get <span className="font-bold"> ${
-                    person.ticket
-                  } scratch ${
-                    person.ticket > 1 ? 'cards' : 'card'
-                  }</span> for a mini-event which will happen after Tet! 🎉`
-                  : `🎉 You get  <span className="font-bold">${
-                    person.ticket
-                  } ${
-                    person.ticket > 1
-                      ? 'tickets'
-                      : 'ticket'
-                  }</span> for <a href="https://nfq-international.slack.com/archives/C053CBZ6CQK/p1735542936734629" target="_blank" className="underline font-bold text-blue-400 z-10">Tết Xóm Tech</a>! 🎉`
-                : `${
-                  unfortunate[
-                    Math.floor(
-                      Math.random() * unfortunate.length,
-                    )
-                    ]
-                }`
-            }`,
-          )
-          .sort(() => 0.5 - Math.random()),
-      )
-    }
-  }, [person])
-
   const [isTriggered, setIsTriggered] = useState<boolean>(false)
-  /* useEffect(() => {
-      setUnexpectedFortune(unexpectedFortune.sort(() => 0.5 - Math.random()));
-  }, []); */
+  const unexpectedFortune = refers
+    .sort(() => 0.5 - Math.random())
+    .slice(0, 2)
+    .map((refer) => {
+      return `${refer.description} <a href="${refer.url}" target="_blank" className="underline font-bold text-blue-400 z-10">${refer.title}</a> at NFQ.`
+    })
+    .concat(
+      `${
+        person.ticket > 0
+          ? person.type == 'scratch'
+            ? `🎉 You get <span className="font-bold"> ${
+              person.ticket
+            } scratch ${
+              person.ticket > 1 ? 'cards' : 'card'
+            }</span> for a mini-event which will happen after Tet! 🎉`
+            : `🎉 You get  <span className="font-bold">${
+              person.ticket
+            } ${
+              person.ticket > 1
+                ? 'tickets'
+                : 'ticket'
+            }</span> for <a href="https://nfq-international.slack.com/archives/C053CBZ6CQK/p1735542936734629" target="_blank" className="underline font-bold text-blue-400 z-10">Tết Xóm Tech</a>! 🎉`
+          : `${
+            unfortunate[
+              Math.floor(
+                Math.random() * unfortunate.length,
+              )
+              ]
+          }`
+      }`,
+    )
+    .sort(() => 0.5 - Math.random())
 
   return (
     <div
@@ -94,13 +83,13 @@ export default function Home() {
           <h1
             className={`text-center ${
               isSet ? 'text-7xl' : 'text-8xl'
-            } font-bold text-white font-[family-name:var(--font-sigmar-one)]`}
+            } font-bold font-[family-name:var(--font-sigmar-one)]`}
           >
             WOMEN'S DAY{' '}
             <br />
             FLOWER - TELLING{' '}
           </h1>
-          <p className="text-2xl font-bold text-white">
+          <p className="text-2xl font-bold">
             ✨Press & Bloom: Discover Your Flower, Embrace Your Power!✨
           </p>
         </div>
@@ -111,48 +100,54 @@ export default function Home() {
             >
               <div className="flex w-full items-start justify-center ">
                 <p className="text-2xl">
-                  Hi
-                  <span className="font-bold text-[#fff307]">
-                                        {' '}
-                    {name}
-                                    </span>
-                  ,
+                  Hi<span className="font-bold">{' '}{name}</span>
                 </p>
               </div>
-              <p className="text-xl">
+              <p className="text-xl !mt-2">
                 Let this song set the mood for your incredible
                 2025.
               </p>
-              <iframe
-                width={music.width}
-                height={music.height}
-                src={`${music.src}?autoplay=1`}
-                title={music.title}
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-              ></iframe>
-              <div className="flex flex-col space-y-6 w-full justify-start items-center">
-                <Card>
+              <OverlappingImages
+                image1={{
+                  src: '/flowers/mountain laurel 1.jpg', // Replace with your image path
+                  alt: 'Mountain landscape',
+                }}
+                image2={{
+                  src: '/flowers/mountain laurel 2.jpg', // Replace with your image path
+                  alt: 'Mountain cliff',
+                }}
+                quote={{
+                  title: 'This is the flower of ambition and unwavering spirit.',
+                  description: 'Mountain Laurel thrives on rocky cliffs, never letting harsh conditions stop it from reaching for the sky.',
+                  caption: 'You are a force of nature, always pushing forward, never settling, always reaching higher. Your determination inspires those around you, proving that no mountain is too high to climb.',
+                  wish: 'Wish you endless mountains to conquer, victories to celebrate, and the strength to rise higher with every challenge.',
+                }}
+              />
+              <Card className="bg-white rounded-xl shadow-lg">
+                <CardHeader className="font-bold text-xl text-[#bb1b12] text-center">
+                  You will find in the 3 boxes below
+                  either ways to trade your bad luck
+                  or....a LUCKY GIFTTTT!
+                </CardHeader>
+                <div className="w-full flex justify-center items-center">
                   <CardContent
-                    className="flex flex-col items-center justify-center space-y-4 p-6 bg-white rounded-xl w-[600px]"
+                    className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl w-[600px]"
                   >
-                    <TextCard
-                      title="👇Here Is Your Message👇 "
-                      description={message}
-                    />
-                    <TextCard
-                      title="🍀Your Lucky Booster🍀"
-                      description={fortuneBooster}
-                    />
-                    <TextCard
-                      title="⚠️Be Cautious Of⚠️"
-                      description={stayAlert}
-                    />
+                    {unexpectedFortune.map(
+                      (fortune, index) => (
+                        <MysteryBox
+                          key={index}
+                          text={fortune}
+                          boxText={
+                            boxTexts[index]
+                          }
+                        />
+                      ),
+                    )}
                   </CardContent>
-                </Card>
-
+                </div>
+              </Card>
+              <div className="flex flex-col space-y-6 w-full justify-start items-center">
                 {!isTriggered ? (
                   <Button
                     className=" text-[#fbc13a] bg-black h-fit font-bold flex flex-col justify-center space-y-4 items-center p-4"

@@ -1,15 +1,33 @@
 'use server'
 
-import { sql } from '@vercel/postgres'
+import { createClient } from '@supabase/supabase-js'
 import { Person } from '@/types'
 
+// Initialize Supabase client
+const supabase = createClient(
+  process.env.NEXT_PUBLIC_SUPABASE_URL!,
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+)
+
 export const addPerson = async (name: string, location: string) => {
-  await sql`INSERT INTO person (full_name, location) VALUES (${name}, ${location})`
+  const { error } = await supabase
+    .from('person')
+    .insert([
+      { full_name: name, location: location }
+    ])
+
+  if (error) throw error
 }
 
 export const checkPerson = async (name: string): Promise<boolean> => {
-  const { rows, fields } = await sql`SELECT * FROM person WHERE full_name = ${name}`
-  return rows.length > 0
+  const { data, error } = await supabase
+    .from('person')
+    .select('*')
+    .eq('full_name', name)
+    .single()
+
+  if (error && error.code !== 'PGRST116') return false // PGRST116 is the "not found" error
+  return !!data
 }
 
 export const addTicket = async (
@@ -17,25 +35,61 @@ export const addTicket = async (
   ticketAmount: number,
   type: string,
 ) => {
-  // update ticket of name in table person
-  await sql`UPDATE person SET ticket = ${ticketAmount}, type = ${type} WHERE full_name = ${name}`
+  const { error } = await supabase
+    .from('person')
+    .update({
+      ticket: ticketAmount,
+      type: type
+    })
+    .eq('full_name', name)
+
+  if (error) throw error
 }
 
 export const deduceTicket = async (ticketAmount: number, id: string) => {
-  await sql`UPDATE ticket_left SET num_left = num_left - ${ticketAmount} WHERE id = ${id}`
+  // Using a transaction to ensure atomic update
+  const { data: currentTickets, error: fetchError } = await supabase
+    .from('ticket_left')
+    .select('num_left')
+    .eq('id', id)
+    .single()
+
+  if (fetchError) throw fetchError
+
+  const newAmount = currentTickets.num_left - ticketAmount
+
+  const { error: updateError } = await supabase
+    .from('ticket_left')
+    .update({ num_left: newAmount })
+    .eq('id', id)
+
+  if (updateError) throw updateError
 }
 
 export const checkTicketLeft = async (id: string): Promise<number> => {
-  const { rows, fields } = await sql`SELECT * FROM ticket_left WHERE id = ${id}`
-  return rows[0]['num_left']
+  const { data, error } = await supabase
+    .from('ticket_left')
+    .select('num_left')
+    .eq('id', id)
+    .single()
+
+  if (error) throw error
+  return data.num_left
 }
 
 export const getPerson = async (name: string): Promise<Person> => {
-  const { rows, fields } = await sql`SELECT * FROM person WHERE full_name = ${name}`
+  const { data, error } = await supabase
+    .from('person')
+    .select('full_name, ticket, type')
+    .eq('full_name', name)
+    .single()
+
+  if (error) throw error
+
   const person: Person = {
-    name: rows[0]['full_name'],
-    ticket: rows[0]['ticket'],
-    type: rows[0]['type'],
+    name: data.full_name,
+    ticket: data.ticket,
+    type: data.type,
   }
 
   return person
