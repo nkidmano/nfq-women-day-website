@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Claim your gift</title>
+
+  <script type="module">
+    import { Application, Controller } from "https://cdn.jsdelivr.net/npm/@hotwired/stimulus@3.2.2/+esm";
+    import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
+    const application = Application.start()
+
+    class GiftBoxController extends Controller {
+      static targets = ["emoji", "claimBtn", "message"];
+
+      claim() {
+        // Remove the joggle animation to stop continuous rotating.
+        this.emojiTarget.classList.remove("joggle");
+
+        // Force a reflow/repaint to reset the state before applying transform transition
+        void this.emojiTarget.offsetWidth;
+
+        // Add the class that triggers the smooth transition
+        this.emojiTarget.classList.add("gift-box__emoji--claimed");
+
+        this.claimBtnTarget.hidden = true;
+
+        setTimeout(() => {
+          this.messageTarget.classList.remove("gift-box__message--hidden");
+          this.emojiTarget.hidden = true;
+
+          confetti({
+            particleCount: 200,
+            spread: 100,
+            origin: { y: 0.25 },
+          });
+        }, 500);
+      }
+    }
+
+    application.register("gift-box", GiftBoxController)
+  </script>
+
+  <style>
+    .text-center { text-align: center; }
+    .joggle { animation: joggle 4.5s ease-in-out infinite; }
+
+    .container {
+      width: min(1000px, 100%);
+      margin: 0 auto;
+    }
+
+    .gift-box { margin-top: 2em; }
+    .gift-box__emoji { font-size: 10em; }
+    .gift-box__btn { font-size: 2em; }
+    .gift-box__emoji--claimed {
+      transition: transform 500ms ease;
+      transform: scale(1.5) rotate(12deg);
+    }
+
+    .gift-box__message {
+      margin-top: 4.5em;
+      font-size: 2em;
+      transition: all 500ms ease;
+    }
+    .gift-box__message--hidden {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+
+    @keyframes joggle {
+      0%, 33%, 100% { transform: rotate(0deg); }
+      3.33% { transform: rotate(-10deg); }
+      6.67% { transform: rotate(12deg); }
+      10% { transform: rotate(-10deg); }
+      13.33% { transform: rotate(9deg); }
+      16.67% { transform: rotate(0deg); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="mt-40">
+    <div class="text-center">
+      <h1>Claim your gift</h1>
+
+      <div class="gift-box" data-controller="gift-box">
+        <div class="gift-box__emoji joggle" data-gift-box-target="emoji">🎁</div>
+
+        <div>
+          <button class="gift-box__btn" data-action="gift-box#claim" data-gift-box-target="claimBtn">
+            Claim
+          </button>
+        </div>
+
+        <div class="gift-box__message gift-box__message--hidden" data-gift-box-target="message">
+          🎉 Gift claimed 🎉
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

@@ -25,7 +25,7 @@ const locations: string[] = ['Ho Chi Minh', 'Da Nang', 'Ha Noi', 'Can Tho']
 
 const NameDialog = () => {
   const [empName, setEmpName] = useState('')
-  const { setName, isSet, name, setPerson } = useName()
+  const { setName, setPerson } = useName()
   const [location, setLocation] = useState('')
   const { toast } = useToast()
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -201,9 +201,7 @@ const NameDialog = () => {
       </Select>
       <div className="w-full flex justify-end items-center !mt-8">
         <Button
-          onClick={() => {
-            submitName(empName, location)
-          }}
+          onClick={() => submitName(empName, location)}
           disabled={isSubmitting}
           className={`w-full text-xl p-8 rounded-full shadow-none bg-pink-500 hover:bg-pink-600 ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
         >

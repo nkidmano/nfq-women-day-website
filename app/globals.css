@@ -93,3 +93,57 @@ p {
     scrollbar-width: none; /* Firefox */
   }
 }
+
+.text-center {
+  text-align: center;
+}
+
+.gift-box__emoji {
+  font-size: 10em;
+  display: inline-block;
+  line-height: 1;
+}
+
+.joggle {
+  animation: joggle 3.5s ease-in-out infinite;
+}
+
+.container {
+  width: min(1000px, 100%);
+  margin: 0 auto;
+}
+
+.gift-box__emoji--claimed {
+  transition: transform 500ms ease;
+  transform: scale(1.5) rotate(12deg);
+}
+
+.gift-box__message {
+  font-size: 20px;
+  transition: opacity 500ms ease;
+}
+
+.gift-box__message--hidden {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.gift-box__text {
+  margin-bottom: 20px;
+}
+
+.gift-box__message--hidden .gift-box__text {
+  width: 0;
+  height: 0;
+  font-size: 0;
+  transform: scale(0.95);
+}
+
+@keyframes joggle {
+  0%, 33%, 100% { transform: rotate(0deg); }
+  3.33% { transform: rotate(-10deg); }
+  6.67% { transform: rotate(12deg); }
+  10% { transform: rotate(-10deg); }
+  13.33% { transform: rotate(9deg); }
+  16.67% { transform: rotate(0deg); }
+}

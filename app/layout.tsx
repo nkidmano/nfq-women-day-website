@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     description: "NFQ Women's Day",
     images: [
       {
-        url: "/img/preview.jpg",
+        url: "/img/preview.png",
         alt: "Preview image",
         width: 1200,
         height: 630,
