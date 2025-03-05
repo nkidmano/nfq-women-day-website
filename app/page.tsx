@@ -1,12 +1,17 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import { usePerson } from '@/context/nameContext'
 import LoginForm from '@/components/LoginForm'
 import GiftContent from '@/components/GiftContent'
+import { getCountSpecialGift } from '@/database/actions'
 
 export default function Home() {
-  const { person } = usePerson()
+  const { person, setSpecialGiftCount } = usePerson()
+
+  useEffect(() => {
+    getCountSpecialGift().then(({ data }) => setSpecialGiftCount(data ?? 10))
+  }, [])
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-start bg-cover bg-center bg-no-repeat font-[family-name:var(--font-inter)]">

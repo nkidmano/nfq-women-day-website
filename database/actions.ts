@@ -16,12 +16,37 @@ export const addPerson = async (email: string, location: string) => {
   return { data, error }
 }
 
-export const getPerson = async (email: string): Promise<{ data: Person, error: any}> => {
+export const getPerson = async (email: string): Promise<{ data: Person | null, error: any}> => {
   const { data, error } = await supabase
     .from('person')
     .select('*')
     .eq('email', email)
     .single()
 
+  const person = data ? {
+    email: data?.email,
+    location: data?.location,
+    giftAmount: data?.gift_amount,
+  } : null
+
+  return { data: person, error }
+}
+
+export const updatePersonGiftAmount = async (email: string, giftAmount: number) => {
+  const { data, error } = await supabase
+    .from('person')
+    .update({ gift_amount: giftAmount })
+    .eq('email', email)
+
   return { data, error }
+}
+
+// people with 2 gifts are special
+export const getCountSpecialGift = async () => {
+  const { data, error } = await supabase
+    .from('person')
+    .select('*')
+    .eq('gift_amount', 2)
+
+  return { data: data?.length ?? 10, error }
 }

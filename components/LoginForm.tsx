@@ -58,7 +58,7 @@ const LoginForm = () => {
       setPerson({ email: person.email, location: person.location, giftAmount: person.giftAmount })
     } else {
       await addPerson(email, location)
-      setPerson({ email: email.split('.')[0].toUpperCase(), location: location as Location, giftAmount: 0 })
+      setPerson({ email, location: location as Location, giftAmount: 0 })
     }
 
     setIsSubmitting(false)

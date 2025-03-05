@@ -50,7 +50,7 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
                   src={image1.src}
                   alt={image1.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-xl"
                 />
               </div>
             </div>
@@ -74,7 +74,7 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
                   src={image2.src}
                   alt={image2.alt}
                   fill
-                  className="object-cover"
+                  className="object-cover rounded-xl"
                 />
               </div>
             </div>
