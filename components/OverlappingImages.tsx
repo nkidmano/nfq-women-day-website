@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { usePerson } from '@/context/nameContext'
+import { getRandomElement } from '@/lib/utils'
+import { FLOWER_WISHES } from '@/lib/mockup'
 
 interface OverlappingImagesProps {
   image1: {
@@ -21,9 +23,13 @@ interface OverlappingImagesProps {
   };
 }
 
+const FLOWER = getRandomElement(FLOWER_WISHES);
+
 const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, quote }) => {
   const { name } = usePerson()
   const [activeImage, setActiveImage] = useState<1 | 2>(1);
+
+  console.log(FLOWER)
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 w-full">
