@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { usePerson } from '@/context/nameContext'
-import { getRandomElement } from '@/lib/utils'
+import { getFirstGrapheme, getRandomElement, removeEmojiAtIndex } from '@/lib/utils'
 import { FLOWER_WISHES } from '@/lib/mockup'
 
 interface OverlappingImagesProps {
@@ -28,8 +28,6 @@ const FLOWER = getRandomElement(FLOWER_WISHES);
 const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, quote }) => {
   const { name } = usePerson()
   const [activeImage, setActiveImage] = useState<1 | 2>(1);
-
-  console.log(FLOWER)
 
   return (
     <div className="bg-white rounded-xl shadow-lg p-6 w-full">
@@ -93,26 +91,26 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
               Hi<span className="font-bold">{' '}{name}</span>
             </p>
           </div>
-          <p className="text-xl !mt-2 text-center">You are a <strong><i>Mountain Laurel</i></strong>
+          <p className="text-xl !mt-2 text-center">You are a <strong><i>{FLOWER.name}</i></strong>
           </p>
           <div className="flex items-start gap-3">
-            <span className="text-[20px] leading-none">⛰️</span>
-            <p className="leading-relaxed">{quote.title}</p>
+            <span className="text-[20px] leading-none">{getFirstGrapheme(FLOWER.wish_1)}️</span>
+            <p className="leading-relaxed">{removeEmojiAtIndex(FLOWER.wish_1, 0)}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-[20px] leading-none">💪</span>
-            <p className="leading-relaxed">{quote.description}</p>
+            <span className="text-[20px] leading-none">{getFirstGrapheme(FLOWER.wish_2)}</span>
+            <p className="leading-relaxed">{removeEmojiAtIndex(FLOWER.wish_2, 0)}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-[20px] leading-none">🎯</span>
-            <p className="leading-relaxed">{quote.caption}</p>
+            <span className="text-[20px] leading-none">{getFirstGrapheme(FLOWER.wish_3)}</span>
+            <p className="leading-relaxed">{removeEmojiAtIndex(FLOWER.wish_3, 0)}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-[20px] leading-none">✨</span>
-            <p className="leading-relaxed">{quote.wish}</p>
+            <span className="text-[20px] leading-none">{getFirstGrapheme(FLOWER.wish_4)}</span>
+            <p className="leading-relaxed">{removeEmojiAtIndex(FLOWER.wish_4, 0)}</p>
           </div>
         </div>
       </div>
