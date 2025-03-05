@@ -99,7 +99,7 @@ export default function Home() {
                   Hi<span className="font-bold">{' '}{name}</span>
                 </p>
               </div>
-              <p className="text-xl !mt-2">You are <strong><i>Mountain Laurel</i></strong></p>
+              <p className="text-xl !mt-2">You are a <strong><i>Mountain Laurel</i></strong></p>
               <OverlappingImages
                 image1={{
                   src: '/flowers/mountain laurel 1.jpg', // Replace with your image path
