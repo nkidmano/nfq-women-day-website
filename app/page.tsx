@@ -65,7 +65,7 @@ export default function Home() {
                 }}
               />
               <Card className="bg-white rounded-xl shadow-lg w-[600px] !mt-10">
-                <CardHeader className="font-bold text-xl text-center">We have surprise for you!!!</CardHeader>
+                <CardHeader className="font-bold text-xl text-center">We have a surprise for you!!!</CardHeader>
                 <div className="w-full flex justify-center items-center">
                   <CardContent
                     className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl"

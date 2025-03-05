@@ -81,22 +81,22 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
 
         <div className="w-full md:w-1/2 space-y-6 px-4">
           <div className="flex items-start gap-3">
-            <span className="text-yellow-500 text-2xl mt-1">⛰️</span>
+            <span className="text-[20px]">⛰️</span>
             <p className="leading-relaxed">{quote.title}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-yellow-500 text-2xl mt-1">💪</span>
+            <span className="text-[20px]">💪</span>
             <p className="leading-relaxed">{quote.description}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-red-500 text-2xl mt-1">🎯</span>
+            <span className="text-red-500 text-2xl">🎯</span>
             <p className="leading-relaxed">{quote.caption}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-yellow-300 text-2xl mt-1">✨</span>
+            <span className="text-[20px]">✨</span>
             <p className="leading-relaxed">{quote.wish}</p>
           </div>
         </div>
