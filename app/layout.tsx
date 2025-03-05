@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Sigmar_One, Quicksand } from "next/font/google";
+import { Inter, Sigmar_One, Quicksand } from "next/font/google";
 import "./globals.css";
 import { NameProvider } from "@/context/nameContext";
 import { Toaster } from "@/components/ui/toaster";
 import { ReactNode } from 'react'
+
+const inter = Inter({
+  variable: "--font-inter",
+  subsets: ['latin']
+})
 
 const sigmarOne = Sigmar_One({
   weight: "400",
@@ -35,7 +40,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<{ children: ReactNode; }>) {
   return (
     <html lang="en" className="no-scrollbar">
-      <body className={`${sigmarOne.variable} ${quicksand.variable} antialiased w-full h-full`}>
+      <body className={`${inter.className} ${sigmarOne.variable} ${quicksand.variable} ${inter.variable} antialiased w-full h-full`}>
         <main className="bg-gradient-overlay">
           <NameProvider>{children}</NameProvider>
           <Toaster />

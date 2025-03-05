@@ -69,9 +69,7 @@ export default function Home() {
     .sort(() => 0.5 - Math.random())
 
   return (
-    <div
-      className="flex min-h-screen w-full flex-col items-center justify-start bg-cover bg-center bg-no-repeat font-[family-name:var(--font-quicksand)]"
-    >
+    <div className="flex min-h-screen w-full flex-col items-center justify-start bg-cover bg-center bg-no-repeat font-[family-name:var(--font-inter)]">
       <div
         className={`flex w-fit flex-col items-center ${
           isSet
@@ -93,20 +91,15 @@ export default function Home() {
             ✨Press & Bloom: Discover Your Flower, Embrace Your Power!✨
           </p>
         </div>
-        <div className="flex w-full flex-col items-center justify-start space-y-4">
+        <div className="flex w-full flex-col items-center justify-start space-y-4 !mt-[48px]">
           {isSet ? (
-            <div
-              className="flex flex-col items-center justify-center space-y-6 text-white"
-            >
-              <div className="flex w-full items-start justify-center ">
+            <div className="flex flex-col items-center justify-center space-y-6 text-white">
+              <div className="flex w-full items-start justify-center">
                 <p className="text-2xl">
                   Hi<span className="font-bold">{' '}{name}</span>
                 </p>
               </div>
-              <p className="text-xl !mt-2">
-                Let this song set the mood for your incredible
-                2025.
-              </p>
+              <p className="text-xl !mt-2">You are <strong><i>Mountain Laurel</i></strong></p>
               <OverlappingImages
                 image1={{
                   src: '/flowers/mountain laurel 1.jpg', // Replace with your image path
@@ -123,8 +116,8 @@ export default function Home() {
                   wish: 'Wish you endless mountains to conquer, victories to celebrate, and the strength to rise higher with every challenge.',
                 }}
               />
-              <Card className="bg-white rounded-xl shadow-lg">
-                <CardHeader className="font-bold text-xl text-[#bb1b12] text-center">
+              <Card className="bg-white rounded-xl shadow-lg w-[600px]">
+                <CardHeader className="font-bold text-xl text-center">
                   You will find in the 3 boxes below
                   either ways to trade your bad luck
                   or....a LUCKY GIFTTTT!

@@ -169,16 +169,16 @@ const NameDialog = () => {
 
   return (
     <div className="w-[500px] flex flex-col space-y-4 justify-center items-center">
-      <p className="text-3xl text-white">Enter your NFQ email: </p>
+      <p className="text-3xl">Enter your NFQ email: </p>
       <div className="w-full mx-auto bg-white rounded-full">
         <Input
           type="text"
-          placeholder="Name"
+          placeholder="example@nfq.com"
           onChange={(e) => setEmpName(e.target.value)}
           className="w-full border-none focus:ring-0 md:text-xl p-6 m-0 shadow-none placeholder:text-gray-400"
         />
       </div>
-      <p className="text-3xl text-white">Select location:</p>
+      <p className="text-3xl">Select location:</p>
       <Select onValueChange={(value) => setLocation(value)}>
         <SelectTrigger className="w-full bg-white p-6 rounded-full text-xl shadow-none">
           <SelectValue placeholder={'Select location'}>
@@ -191,7 +191,7 @@ const NameDialog = () => {
               value={loc}
               key={loc}
               onClick={() => setLocation(loc)}
-              className="text-xl cursor-pointer font-[family-name:var(--font-quicksand)]"
+              className="text-xl cursor-pointer font-[family-name:var(--font-inter)]"
             >
               {loc}
             </SelectItem>
