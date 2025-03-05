@@ -1,30 +1,21 @@
 'use client'
 
 import React from 'react'
-import { useName } from '@/context/nameContext'
-import NameDialog from '@/components/dialog/NameDialog'
+import { usePerson } from '@/context/nameContext'
+import LoginForm from '@/components/LoginForm'
 import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import OverlappingImages from '@/components/card/OverlappingImages'
+import OverlappingImages from '@/components/OverlappingImages'
 import GiftBox from '@/components/GiftBox'
 
 export default function Home() {
-  const { isSet, name } = useName()
+  const { name, person } = usePerson()
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-start bg-cover bg-center bg-no-repeat font-[family-name:var(--font-inter)]">
       <div
-        className={`flex w-fit flex-col items-center ${
-          isSet
-            ? 'justify-start space-y-6 my-6'
-            : 'justify-center space-y-24 h-screen'
-        }`}
-      >
+        className={`flex w-fit flex-col items-center ${person ? 'justify-start space-y-6 my-6' : 'justify-center space-y-24 h-screen'}`}>
         <div className="flex w-full flex-col items-center justify-start space-y-4">
-          <h1
-            className={`text-center ${
-              isSet ? 'text-7xl' : 'text-8xl'
-            } font-bold font-[family-name:var(--font-sigmar-one)]`}
-          >
+          <h1 className={`text-center ${person ? 'text-7xl' : 'text-8xl'} font-bold font-[family-name:var(--font-sigmar-one)]`}>
             WOMEN'S DAY{' '}
             <br />
             FLOWER - TELLING{' '}
@@ -33,21 +24,15 @@ export default function Home() {
             ✨Press & Bloom: Discover Your Flower, Embrace Your Power!✨
           </p>
         </div>
-        <div
-          className="flex w-full flex-col items-center justify-start space-y-4 !mt-[48px]"
-        >
-          {isSet ? (
-            <div
-              className="flex flex-col items-center justify-center space-y-6 text-white"
-            >
+        <div className="flex w-full flex-col items-center justify-start space-y-4 !mt-[48px]">
+          {person ? (
+            <div className="flex flex-col items-center justify-center space-y-6 text-white">
               <div className="flex w-full items-start justify-center">
                 <p className="text-2xl">
                   Hi<span className="font-bold">{' '}{name}</span>
                 </p>
               </div>
-              <p
-                className="text-xl !mt-2"
-              >You are a <strong><i>Mountain Laurel</i></strong></p>
+              <p className="text-xl !mt-2">You are a <strong><i>Mountain Laurel</i></strong></p>
               <OverlappingImages
                 image1={{
                   src: '/flowers/mountain laurel 1.jpg', // Replace with your image path
@@ -76,7 +61,7 @@ export default function Home() {
               </Card>
             </div>
           ) : (
-            <NameDialog />
+            <LoginForm />
           )}
         </div>
       </div>

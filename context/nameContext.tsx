@@ -1,18 +1,17 @@
 'use client'
-import React, { createContext, useContext, useEffect, useState } from 'react'
+
+import React, { createContext, useContext, useState } from 'react'
 import { Person } from '@/types'
 
 interface NameContextProps {
   name: string;
-  setName: (name: string) => void;
-  person: Person;
-  setPerson: (person: Person) => void;
-  isSet: boolean;
+  person: null | Person;
+  setPerson: React.Dispatch<React.SetStateAction<null | Person>>;
 }
 
 const nameContext = createContext<NameContextProps | undefined>(undefined)
 
-export const useName = () => {
+export const usePerson = () => {
   const context = useContext(nameContext)
   if (!context) {
     throw new Error('useName must be used within a NameProvider')
@@ -25,26 +24,12 @@ interface NameProviderProps {
 }
 
 export const NameProvider = ({ children }: NameProviderProps) => {
-  const [name, setName] = useState<string>('')
-  const [person, setPerson] = useState<Person>({
-    name: '',
-    ticket: 0,
-    type: 'none',
-  })
-  const [isSet, setIsSet] = useState<boolean>(false)
+  const [person, setPerson] = useState<null | Person>(null)
 
-  useEffect(() => {
-    if (name) {
-      setIsSet(true)
-    } else {
-      setIsSet(false)
-    }
-  }, [name])
+  const name = person?.email?.split('.')?.[0]?.toUpperCase() ?? ''
 
   return (
-    <nameContext.Provider
-      value={{ name, setName, isSet, person, setPerson }}
-    >
+    <nameContext.Provider value={{ name, person, setPerson }}>
       {children}
     </nameContext.Provider>
   )

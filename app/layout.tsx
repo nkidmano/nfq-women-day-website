@@ -41,7 +41,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode;
   return (
     <html lang="en" className="no-scrollbar">
       <body className={`${inter.className} ${sigmarOne.variable} ${quicksand.variable} ${inter.variable} antialiased w-full h-full`}>
-        <main className="pb-[100px]">
+        <main>
           <NameProvider>{children}</NameProvider>
           <Toaster />
         </main>
