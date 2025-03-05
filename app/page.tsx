@@ -140,44 +140,6 @@ export default function Home() {
                   </CardContent>
                 </div>
               </Card>
-              <div className="flex flex-col space-y-6 w-full justify-start items-center">
-                {!isTriggered ? (
-                  <Button
-                    className=" text-[#fbc13a] bg-black h-fit font-bold flex flex-col justify-center space-y-4 items-center p-4"
-                    onClick={() => setIsTriggered(true)}
-                  >
-                    <p className="text-lg">
-                      Ready to test your New Year's Luck?
-                      CLICK HERE!
-                    </p>
-                  </Button>
-                ) : (
-                  <Card className="w-[600px]">
-                    <CardHeader className="font-bold text-xl text-[#bb1b12] text-center">
-                      You will find in the 3 boxes below
-                      either ways to trade your bad luck
-                      or....a LUCKY GIFTTTT!
-                    </CardHeader>
-                    <div className="w-full flex justify-center items-center">
-                      <CardContent
-                        className="flex flex-col items-center justify-center space-y-4 px-6 pb-6 bg-white rounded-xl w-[600px]"
-                      >
-                        {unexpectedFortune.map(
-                          (fortune, index) => (
-                            <MysteryBox
-                              key={index}
-                              text={fortune}
-                              boxText={
-                                boxTexts[index]
-                              }
-                            />
-                          ),
-                        )}
-                      </CardContent>
-                    </div>
-                  </Card>
-                )}
-              </div>
             </div>
           ) : (
             <NameDialog />

@@ -198,20 +198,15 @@ const NameDialog = () => {
           ))}
         </SelectContent>
       </Select>
-      <div className="w-full flex justify-end items-center">
+      <div className="w-full flex justify-end items-center !mt-8">
         <Button
           onClick={() => {
             submitName(empName, location)
           }}
           disabled={isSubmitting}
-          className={`
-                    ${
-            isSubmitting
-              ? 'cursor-not-allowed bg-[#fbc13a]/50 hover:bg-[#fbc13a]/50 w-full text-xl p-6 rounded-full shadow-none text-white'
-              : 'w-full text-xl p-6 rounded-full shadow-none bg-[#fbc13a] text-white hover:bg-[#fbc13a]/90'
-          }`}
+          className={`w-full text-xl p-8 rounded-full shadow-none bg-pink-500 hover:bg-pink-600 ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
         >
-          {isSubmitting ? 'Submitting...' : 'Submit'}
+          {isSubmitting ? 'Continuing...' : 'Continue'}
         </Button>
       </div>
     </div>
