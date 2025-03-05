@@ -6,26 +6,9 @@ import { usePerson } from '@/context/nameContext'
 import { getFirstGrapheme, getRandomElement, removeEmojiAtIndex } from '@/lib/utils'
 import { FLOWER_WISHES } from '@/lib/mockup'
 
-interface OverlappingImagesProps {
-  image1: {
-    src: string;
-    alt: string;
-  };
-  image2: {
-    src: string;
-    alt: string;
-  };
-  quote: {
-    title: string;
-    description: string;
-    caption: string;
-    wish: string;
-  };
-}
-
 const FLOWER = getRandomElement(FLOWER_WISHES);
 
-const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, quote }) => {
+const OverlappingImages: React.FC = () => {
   const { name } = usePerson()
   const [activeImage, setActiveImage] = useState<1 | 2>(1);
 
@@ -51,8 +34,8 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={image1.src}
-                  alt={image1.alt}
+                  src={FLOWER.images[0]}
+                  alt={FLOWER.name}
                   fill
                   className="object-cover rounded-xl"
                 />
@@ -75,8 +58,8 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
             >
               <div className="relative w-full h-full">
                 <Image
-                  src={image2.src}
-                  alt={image2.alt}
+                  src={FLOWER.images[1]}
+                  alt={FLOWER.name}
                   fill
                   className="object-cover rounded-xl"
                 />
