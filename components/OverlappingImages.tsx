@@ -33,10 +33,10 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
           <div className="relative w-full h-full perspective-1000">
             {/* Image 1 */}
             <div
-              className={`absolute w-5/6 h-5/6 shadow-lg rounded-md overflow-hidden cursor-pointer transition-all duration-500 transform ${
+              className={`absolute w-5/6 h-5/6 p-2 shadow-md rounded-xl bg-white overflow-hidden cursor-pointer transition-all duration-500 transform ${
                 activeImage === 1
-                  ? 'z-20 scale-105 rotate-0'
-                  : 'z-10 scale-95 -rotate-3 opacity-90'
+                  ? 'z-20 scale-105 rotate-0 opacity-100'
+                  : 'z-10 scale-95 -rotate-3 opacity-70'
               }`}
               style={{
                 top: '0',
@@ -57,10 +57,10 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
 
             {/* Image 2 */}
             <div
-              className={`absolute w-5/6 h-5/6 shadow-lg rounded-md overflow-hidden cursor-pointer transition-all duration-500 transform ${
+              className={`absolute w-5/6 h-5/6 p-2 shadow-md rounded-xl bg-white overflow-hidden cursor-pointer transition-all duration-500 transform ${
                 activeImage === 2
-                  ? 'z-20 scale-105 rotate-0'
-                  : 'z-10 scale-95 rotate-3 opacity-90'
+                  ? 'z-20 scale-105 rotate-0 opacity-100'
+                  : 'z-10 scale-95 rotate-3 opacity-70'
               }`}
               style={{
                 bottom: '0',
