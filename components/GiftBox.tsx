@@ -52,7 +52,8 @@ const GiftBox = () => {
 
   const calculateGiftAmount = (specialGiftCount: number) => {
     if (specialGiftCount >= 10) return 1
-    return Math.random() > 0.5 ? 2 : 1
+    // 20% getting 2 gifts and 80% getting 1 gift
+    return Math.random() < 0.2 ? 2 : 1
   }
 
   return (
