@@ -3,13 +3,13 @@
 @tailwind utilities;
 
 body {
-  background-image: url('/img/design.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /*background-image: url('/img/design.png');*/
+  /*background-size: cover;*/
+  /*background-position: center;*/
+  /*background-repeat: no-repeat;*/
+  /*background-attachment: fixed;*/
 
-  /*@apply bg-gradient-to-b from-pink-50 to-purple-50*/
+  @apply bg-gradient-to-b from-pink-50 to-purple-50
 }
 
 @layer base {
@@ -144,4 +144,46 @@ body {
   10% { transform: rotate(-10deg); }
   13.33% { transform: rotate(9deg); }
   16.67% { transform: rotate(0deg); }
+}
+/* Base styling for all corners */
+.corner {
+  position: absolute;
+  background-color: #ffd6e0;
+  z-index: -1;
+}
+
+/* Top left corner */
+.corner-top-left {
+  top: 0;
+  left: 0;
+  width: 400px;
+  height: 400px;
+  border-bottom-right-radius: 100% 70%;
+}
+
+/* Top right corner */
+.corner-top-right {
+  top: 0;
+  right: 0;
+  width: 350px;
+  height: 300px;
+  border-bottom-left-radius: 90% 80%;
+}
+
+/* Bottom right corner */
+.corner-bottom-right {
+  bottom: 0;
+  right: 0;
+  width: 450px;
+  height: 350px;
+  border-top-left-radius: 85% 75%;
+}
+
+/* Bottom left corner */
+.corner-bottom-left {
+  bottom: 0;
+  left: 0;
+  width: 300px;
+  height: 250px;
+  border-top-right-radius: 80% 70%;
 }
