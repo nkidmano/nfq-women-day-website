@@ -7,13 +7,6 @@ export const FLOWER_WISHES = [
     "wish_4": "🦁Wish you the courage to own your strength, the wisdom to know when to wield it, and a life where you are always safe, always seen, always unstoppable."
   },
   {
-    "name": "Angel’s Trumpet",
-    "wish_1": "🎺This is the flower of divine guidance and protection.",
-    "wish_2": "🌿With its heavenly scent and ethereal beauty, the Angel’s Trumpet whispers of unseen forces, of guardian angels watching over us.",
-    "wish_3": "🕊️You are someone who walks with grace, who carries light in every step, who knows that even in the darkest moments, there is always a hand to guide you.",
-    "wish_4": "🌟Wish you a life where you always feel protected, where you never walk alone, and where you know that you are never far from the divine."
-  },
-  {
     "name": "Bat Flower (Tacca)",
     "wish_1": "🦇This is the flower of intrigue and mysticism.",
     "wish_2": "🌑Striking, dark, and otherworldly, the Bat Flower is nature’s reminder that mystery is an art, and some things are meant to be beyond understanding.",
@@ -173,13 +166,6 @@ export const FLOWER_WISHES = [
     "wish_2": "🌿Blooming only at night and fading before dawn, the Kadupul Flower is so rare and delicate that it cannot be owned—only experienced.",
     "wish_3": "💫You are someone who carries an untouchable grace. Ethereal, one-of-a-kind, impossible to capture yet unforgettable.",
     "wish_4": "🌌Wish you moments so beautiful they take your breath away, dreams that come alive in the night, and a soul that remains forever free."
-  },
-  {
-    "name": "Lavender",
-    "wish_1": "💜This is the flower of calm and healing.",
-    "wish_2": "🌿Known for its soothing scent and calming properties, lavender is a reminder that peace is always within reach.",
-    "wish_3": "🧘‍♀️You are someone who brings tranquility wherever you go, who heals with your presence, and who finds beauty in the quiet moments.",
-    "wish_4": "🌌Wish you a life filled with serenity, a heart that always feels at home, and the kind of healing that only comes from within."
   },
   {
     "name": "Leopard Lily",
