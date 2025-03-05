@@ -3,15 +3,17 @@
 @tailwind utilities;
 
 body {
-  background-image: url('/img/design.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  /*background-image: url('/img/design.png');*/
+  /*background-size: cover;*/
+  /*background-position: center;*/
+  /*background-repeat: no-repeat;*/
+  /*background-attachment: fixed;*/
+
+  @apply bg-gradient-to-b from-pink-50 to-purple-50
 }
 
 p {
-  color: black;
+  color: #2E2F3C;
 }
 
 @layer base {
@@ -77,7 +79,7 @@ p {
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-[#2E2F3C];
   }
 }
 
