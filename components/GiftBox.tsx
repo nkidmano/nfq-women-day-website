@@ -5,7 +5,7 @@ import confetti from 'canvas-confetti';
 
 const GiftBox = () => {
   const [isMessageVisible, setIsMessageVisible] = useState(false);
-  const emojiRef = useRef(null);
+  const emojiRef = useRef<null | HTMLDivElement>(null);
 
   const handleClaim = () => {
     // Remove joggle animation

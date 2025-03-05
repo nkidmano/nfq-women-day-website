@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
+import { usePerson } from '@/context/nameContext'
 
 interface OverlappingImagesProps {
   image1: {
@@ -21,6 +22,7 @@ interface OverlappingImagesProps {
 }
 
 const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, quote }) => {
+  const { name } = usePerson()
   const [activeImage, setActiveImage] = useState<1 | 2>(1);
 
   return (
@@ -80,23 +82,30 @@ const OverlappingImages: React.FC<OverlappingImagesProps> = ({ image1, image2, q
         </div>
 
         <div className="w-full md:w-1/2 space-y-6 px-4">
+          <div className="flex w-full items-start justify-center">
+            <p className="text-2xl">
+              Hi<span className="font-bold">{' '}{name}</span>
+            </p>
+          </div>
+          <p className="text-xl !mt-2 text-center">You are a <strong><i>Mountain Laurel</i></strong>
+          </p>
           <div className="flex items-start gap-3">
-            <span className="text-[20px]">⛰️</span>
+            <span className="text-[20px] leading-none">⛰️</span>
             <p className="leading-relaxed">{quote.title}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-[20px]">💪</span>
+            <span className="text-[20px] leading-none">💪</span>
             <p className="leading-relaxed">{quote.description}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-red-500 text-2xl">🎯</span>
+            <span className="text-[20px] leading-none">🎯</span>
             <p className="leading-relaxed">{quote.caption}</p>
           </div>
 
           <div className="flex items-start gap-3">
-            <span className="text-[20px]">✨</span>
+            <span className="text-[20px] leading-none">✨</span>
             <p className="leading-relaxed">{quote.wish}</p>
           </div>
         </div>
