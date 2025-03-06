@@ -13,8 +13,8 @@ const OverlappingImages: React.FC = () => {
   const [activeImage, setActiveImage] = useState<1 | 2>(1);
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-6 w-full">
-      <div className="flex flex-col md:flex-row items-center gap-8 p-4 max-w-5xl mx-auto">
+    <div className="bg-white rounded-xl shadow-lg p-6 w-full max-w-full">
+      <div className="flex flex-col md:flex-row items-center gap-8 p-0 md:p-4 max-w-5xl mx-auto">
         <div className="relative w-full md:w-1/2 h-96 md:h-[450px]">
           {/* Container with perspective for 3D effect */}
           <div className="relative w-full h-full perspective-1000">
@@ -68,13 +68,13 @@ const OverlappingImages: React.FC = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-1/2 space-y-6 px-4">
+        <div className="w-full md:w-1/2 space-y-6 md:px-4">
           <div className="flex w-full items-start justify-center">
-            <p className="text-2xl">
+            <p className="text-lg md:text-2xl">
               Hi<span className="font-bold">{' '}{name}</span>
             </p>
           </div>
-          <p className="text-xl !mt-2 text-center">You are a <strong><i>{FLOWER.name}</i></strong>
+          <p className="text-lg md:text-xl !mt-2 text-center">You are a <strong><i>{FLOWER.name}</i></strong>
           </p>
           <div className="flex items-start gap-3">
             <span className="text-[20px] leading-none">{getFirstGrapheme(FLOWER.wish_1)}️</span>

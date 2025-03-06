@@ -65,8 +65,8 @@ const LoginForm = () => {
   }
 
   return (
-    <div className="w-[500px] flex flex-col space-y-4 justify-center items-center">
-      <p className="text-2xl">Enter your NFQ email: </p>
+    <div className="w-[500px] max-w-full flex flex-col space-y-4 justify-center items-center">
+      <p className="md:text-2xl">Enter your NFQ email: </p>
       <div className="w-full mx-auto bg-white rounded-full">
         <Input
           type="text"
@@ -75,9 +75,9 @@ const LoginForm = () => {
           className="w-full border-none focus:ring-0 md:text-xl p-6 m-0 shadow-none placeholder:text-gray-400"
         />
       </div>
-      <p className="text-2xl">Select location:</p>
+      <p className="md:text-2xl">Select location:</p>
       <Select onValueChange={(value) => setLocation(value)}>
-        <SelectTrigger className="w-full bg-white p-6 rounded-full text-xl shadow-none">
+        <SelectTrigger className="w-full bg-white p-6 rounded-full md:text-xl shadow-none">
           <SelectValue placeholder={'Select location'}>
             {location}
           </SelectValue>
@@ -99,7 +99,7 @@ const LoginForm = () => {
         <Button
           onClick={() => submitName(email.toLowerCase(), location)}
           disabled={isSubmitting}
-          className={`w-full text-xl h-[50px] rounded-full shadow-none bg-pink-500 hover:bg-pink-600 ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
+          className={`w-full md:text-xl h-[50px] rounded-full shadow-none bg-pink-500 hover:bg-pink-600 ${isSubmitting ? 'cursor-not-allowed opacity-70' : ''}`}
         >
           {isSubmitting ? 'Continuing...' : 'Continue'}
         </Button>

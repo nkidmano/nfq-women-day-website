@@ -42,10 +42,10 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode;
     <html lang="en" className="no-scrollbar">
       <body className={`${inter.className} ${sigmarOne.variable} ${quicksand.variable} ${inter.variable} antialiased w-full h-full`}>
       <main className="relative w-full h-full">
-        <div className="corner corner-top-left"></div>
-        <div className="corner corner-top-right"></div>
-        <div className="corner corner-bottom-right"></div>
-        <div className="corner corner-bottom-left"></div>
+        <div className="hidden md:block corner corner-top-left"></div>
+        <div className="hidden md:block corner corner-top-right"></div>
+        <div className="hidden md:block corner corner-bottom-right"></div>
+        <div className="hidden md:block corner corner-bottom-left"></div>
         <NameProvider>{children}</NameProvider>
         <Toaster />
       </main>
